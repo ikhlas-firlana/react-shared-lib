@@ -1,17 +1,20 @@
-import {useState} from "react";
+import { useContext } from "react";
+import { CartContext } from "../store/cart-context";
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
-
+  const {items} = useContext(CartContext);
   return (
     <div>
       <p>Cart</p>
       <div style={{margin: '0 auto', width: '300px'}}>
         <ul>
           {
-            cart.map((value, index) => (
+            items.length > 0 ? items.map((value, index) => (
               <li key={index}>{value}</li>
-            ))
+            )) : null
+          }
+          {
+            items.length === 0 ? <p>No items in cart!</p> : null
           }
         </ul>
       </div>
