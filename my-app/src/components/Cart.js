@@ -1,7 +1,7 @@
-import {useState} from "react";
+import {useSelector} from "react-redux";
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
+  const cart = useSelector(state => state.cart.items);
 
   return (
     <div>
